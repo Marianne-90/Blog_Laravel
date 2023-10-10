@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', HomeController::class);
+
+
+//*? a partir de laravel 9 se puede hacer esto de hacerlo en grupos 
+
+Route::controller(CursoController::class)->group(function () {
+
+    Route::get('cursos', 'index');
+    Route::get('cursos/create', 'create');
+    Route::get('cursos/{curso}', 'show');
 });
+
+// Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
+
+//     //*? el signo de interrogación es para hacer opcional la ruta
+//     if ($categoria) {
+//         return "bienvenido a la página cursos: $curso de la categoría $categoria";
+//     }
+//     return "bienvenido a la página cursos: $curso";
+// });
+
+
+//*? EL SNIPET DE LARAVEL SNIPETS ES Route::get Y BUSCAS EL SNIPET

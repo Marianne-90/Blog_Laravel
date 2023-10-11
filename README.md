@@ -20,7 +20,8 @@ Laravel facilita la administración de bases de datos. Para crear todas las tabl
 php artisan migrate
 
 Eliminar el último lote de migraciones
-``` php artisan migrate:rollback
+```bash
+php artisan migrate:rollback
 
 => Por convención si escribes esto php artisan make:migration create_cursos_table te crea el archivo ya con el Schema y con el down además de tener el nombre de la tabla
 => php artisan migrate:fresh elimina todas las tablas y las vuelve a crear, mucho cuidado porque ELIMINA TODO,  si no hay datos puede servir para añadir una columna  

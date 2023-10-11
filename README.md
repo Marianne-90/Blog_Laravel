@@ -26,9 +26,19 @@ Eliminar el último lote de migraciones:
 
 - `php artisan migrate:fresh` elimina **todas** las tablas y las vuelve a crear, mucho cuidado porque **ELIMINA TODO**,  si no hay datos puede servir para añadir una columna  
 
+- `php artisan migrate:reset` elimina todas las bases de datos creadas hasta ahora
+
 ### Modificar valores de las tablas
 
 - En caso ya tengas datos puedes añadir `php artisan make:migration add_$columna_to_$tabla_table` y se crea un nuevo archivo donde puedes añadir la columna, **importante**, recuerda  que sea _nullable_
+
+- El archivo de migración quedaría algo así: 
+    - `Schema::table('users', function (Blueprint $table) {`
+`$table->string('avatar')->nullable()->after('email'); });`
+- Para aplicar down sería algo así:
+    - `Schema::table('users', function (Blueprint $table) {`
+      `$table->dropColumn('avatar');`
+       ` });`
 
 - para modificar valores en las tablas por ejemplo que una columna x acepte solo 50 valores en vez de 255 primero debemos de poner `composer require doctrine/dbal` 
     * luego creamos una migración por ejemplo `php artisan make:migration cambiar_propiedades_to_user_table` y luego vas a la migración y pones 
@@ -36,4 +46,29 @@ Eliminar el último lote de migraciones:
             $table -> string('name', 250)-> nullable(false)-> change();
         });`
     
-        _ para regresarlo es misma función pero con la cantidad original `$table -> string('name', 50)-> change();` _ 
+        *para regresarlo es misma función pero con la cantidad original* `$table -> string('name', 50)-> change();` 
+## Modelos
+- utilizan *eloquent* lo que trata a las consultas mysql como objetos y para ello crea modelos que son los administradores `php artisan make model` 
+    - _Si creas un modelo llamado User lo que entiene es que administra la tabla users_
+
+### Tinker
+- para iniciar `php artisan thinker`
+- para salir `exit`
+
+#### Uso
+- El objetivo es añadir algo en la base de datos sin usas instancias sql este es un ejemplo 
+`use  App\Models\Curso;` _poner el name space_           
+`$curso = new Curso;` _instanciar el modelo_    
+**añadimos las características**    
+`$curso -> name = 'Laravel';` _añadir todas_           
+`$curso` _con esto se ven sus características_                                       
+`$curso->save();` _se manda a base de datos_               
+- **Nota** como estamos trabajando como sifueran objetos si quieres cambiar un valor por ejemplo de curso lo haces igual  `$curso -> name = 'Laravel'` y luego lo guardas, si quieres crear otra entrada debes instanciar otra vez la clase 
+
+## Seeder 
+- para probarlo es igual que thinker pero en la carpeta DataBaseSeeder y para ejecutarlo es `php artisan db:seed` pero es poco práctico entonces los hacemos en arhivos separaros por ejemplo
+    - `php artisan make:seeder Curso_Seeder`
+- Para limpiar todo y ejecutar las seeds poner `php artisan migrate:fresh --seed` o `php artisan migrate --seed`
+
+## Factory
+- te llena por lote con valores falsos, para crear un factory es por ejemplo `php artisan make:factory CursoFactory` 

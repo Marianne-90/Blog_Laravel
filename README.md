@@ -52,7 +52,7 @@ Eliminar el último lote de migraciones:
     - _Si creas un modelo llamado User lo que entiene es que administra la tabla users_
 
 ### Tinker
-- para iniciar `php artisan thinker`
+- para iniciar `php artisan tinker`
 - para salir `exit`
 
 #### Uso
@@ -64,6 +64,25 @@ Eliminar el último lote de migraciones:
 `$curso` _con esto se ven sus características_                                       
 `$curso->save();` _se manda a base de datos_               
 - **Nota** como estamos trabajando como sifueran objetos si quieres cambiar un valor por ejemplo de curso lo haces igual  `$curso -> name = 'Laravel'` y luego lo guardas, si quieres crear otra entrada debes instanciar otra vez la clase 
+
+#### Consultas 
+- Para hacer una consulta es necesario poner por ejemplo `use App\Models\Curso;`
+    - y luego `$curso = Curso::all();` para recuperar todos
+    - o `$curso = Curso::where('categoria', 'Diseño Web')-> get();` para filtrar por un valor
+    - para ordenar  `$curso = Curso::where('categoria', 'Diseño Web')-> orderBy('id', 'desc') -> get();` 
+    - para obtener el primero `$curso = Curso::where('categoria', 'Diseño Web')-> orderBy('id', 'desc') -> first();` 
+    - para solo obtener ciertos valores `$curso = Curso::select('name', 'description')->get();` 
+        - para cambiar el nombre de un valor en el resultado de la consulta `$curso = Curso::select('name as title', 'description')->get();`
+    -Para controlar la cantidad de registros que devuelve `$curso = Curso::select('name', 'description')->take(3)-> get();`
+    - **Para encontrar por id específico hay una forma PRESTABLECIDA** `$curso = Curso::find(5);`
+##### Consultas Complejas
+    -Para por ejemplo hacer una consulta donde el id sea mayor a 45 sería:
+
+    $curso = Curso::where('id', '>', 45)->get(); 
+
+    - Para ver si contiene una palabra en específico sería:
+
+    $curso = Curso::where('name', 'like', '%voluptate%')->get(); 
 
 ## Seeder 
 - para probarlo es igual que thinker pero en la carpeta DataBaseSeeder y para ejecutarlo es `php artisan db:seed` pero es poco práctico entonces los hacemos en arhivos separaros por ejemplo

@@ -91,3 +91,5 @@ Eliminar el último lote de migraciones:
 
 ## Factory
 - te llena por lote con valores falsos, para crear un factory es por ejemplo `php artisan make:factory CursoFactory --model=Curso` 
+
+## Mutadores y Accesores 

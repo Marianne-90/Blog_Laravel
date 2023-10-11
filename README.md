@@ -30,4 +30,5 @@ Eliminar el último lote de migraciones:
 
 - En caso ya tengas datos puedes añadir `php artisan make:migration add_$columna_to_$tabla_table` y se crea un nuevo archivo donde puedes añadir la columna, **importante**, recuerda  que sea _nullable_
 
-- para modificar valores en las tablas por ejemplo que una columna x acepte solo 50 valores en vez de 255 primero debemos de poner `composer require doctrine/dbal` y luego seguir las instrucciones de la página oficila de larabel 
+- para modificar valores en las tablas por ejemplo que una columna x acepte solo 50 valores en vez de 255 primero debemos de poner `composer require doctrine/dbal` 
+* luego creamos una migración por ejemplo `php artisan make:migration cambiar_propiedades_to_user_table` y luego vas a la migración y pones `$table -> string('name', 50)-> change();` < para regresarlo es misma función pero con la cantidad original > 

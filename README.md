@@ -71,4 +71,4 @@ Eliminar el último lote de migraciones:
 - Para limpiar todo y ejecutar las seeds poner `php artisan migrate:fresh --seed` o `php artisan migrate --seed`
 
 ## Factory
-- te llena por lote con valores falsos, para crear un factory es por ejemplo `php artisan make:factory CursoFactory` 
+- te llena por lote con valores falsos, para crear un factory es por ejemplo `php artisan make:factory CursoFactory --model=Curso` 

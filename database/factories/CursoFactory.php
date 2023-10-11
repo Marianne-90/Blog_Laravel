@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Curso;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,15 @@ class CursoFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = Curso::class;
+
     public function definition(): array
     {
         return [
-            //
+            'name'  => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'categoria' => $this->faker->randomElement(['Desarrollo Web', 'Diseño Web']),
         ];
     }
 }

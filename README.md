@@ -16,11 +16,10 @@ Laravel utiliza el patrón de diseño Modelo-Vista-Controlador (MVC). Esto signi
 ## Migraciones de Base de Datos
 Laravel facilita la administración de bases de datos. Para crear todas las tablas definidas en las migraciones, ejecuta el siguiente comando:
 
-```bash
-php artisan migrate
+`php artisan migrate`
 
 Eliminar el último lote de migraciones
-```bash
+
 php artisan migrate:rollback
 
 => Por convención si escribes esto php artisan make:migration create_cursos_table te crea el archivo ya con el Schema y con el down además de tener el nombre de la tabla

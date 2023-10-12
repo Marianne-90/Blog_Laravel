@@ -75,6 +75,7 @@ Eliminar el último lote de migraciones:
         - para cambiar el nombre de un valor en el resultado de la consulta `$curso = Curso::select('name as title', 'description')->get();`
     -Para controlar la cantidad de registros que devuelve `$curso = Curso::select('name', 'description')->take(3)-> get();`
     - **Para encontrar por id específico hay una forma PRESTABLECIDA** `$curso = Curso::find(5);`
+
 ##### Consultas Complejas
     -Para por ejemplo hacer una consulta donde el id sea mayor a 45 sería:
 
@@ -92,4 +93,5 @@ Eliminar el último lote de migraciones:
 ## Factory
 - te llena por lote con valores falsos, para crear un factory es por ejemplo `php artisan make:factory CursoFactory --model=Curso` 
 
-## Mutadores y Accesores 
+## Rutas
+- si usas paginate tienes que poner `?page=2` para cargar los siguientes registros 

@@ -95,3 +95,4 @@ Eliminar el último lote de migraciones:
 
 ## Rutas
 - si usas paginate tienes que poner `?page=2` para cargar los siguientes registros 
+- para ver las rutas es en la consola `php artisan r:l`

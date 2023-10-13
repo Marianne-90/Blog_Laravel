@@ -1,19 +1,19 @@
-# Notas del tutorial 
+# NOTAS DEL TUTORIAL 
 
 En este tutorial, aprenderás los conceptos básicos de Laravel y cómo configurar un proyecto. Asegúrate de seguir estos pasos para comenzar con éxito.
 
-## Acceso a la carpeta 'public'
+## ACCESO A LA CARPETA 'PUBLIC'
 En Laravel, el usuario solo puede acceder a lo que se encuentra en la carpeta 'public'. Asegúrate de alojar tus archivos públicos y recursos aquí.
 
-## Definición de Rutas
+## DEFINICIÓN DE RUTAS
 
 En el archivo 'routes/web.php', se definen las rutas globales de tu proyecto. Este es el punto de entrada para definir las rutas de tu aplicación.
 
-## Patrón de Diseño MVC
+## PATRÓN DE DISEÑO MVC
 
 Laravel utiliza el patrón de diseño Modelo-Vista-Controlador (MVC). Esto significa que la lógica de tu aplicación se separa de la presentación (vistas). Asegúrate de seguir este patrón para mantener tu código organizado.
 
-## Migraciones de Base de Datos
+## MIGRACIONES DE BASE DE DATOS
 Laravel facilita la administración de bases de datos. Para crear todas las tablas definidas en las migraciones, ejecuta el siguiente comando:
 
 `php artisan migrate`
@@ -47,7 +47,7 @@ Eliminar el último lote de migraciones:
         });`
     
         *para regresarlo es misma función pero con la cantidad original* `$table -> string('name', 50)-> change();` 
-## Modelos
+## MODELOS
 - utilizan *eloquent* lo que trata a las consultas mysql como objetos y para ello crea modelos que son los administradores `php artisan make model` 
     - _Si creas un modelo llamado User lo que entiene es que administra la tabla users_
 
@@ -85,14 +85,17 @@ Eliminar el último lote de migraciones:
 
     $curso = Curso::where('name', 'like', '%voluptate%')->get(); 
 
-## Seeder 
+## SEEDER 
 - para probarlo es igual que thinker pero en la carpeta DataBaseSeeder y para ejecutarlo es `php artisan db:seed` pero es poco práctico entonces los hacemos en arhivos separaros por ejemplo
     - `php artisan make:seeder Curso_Seeder`
 - Para limpiar todo y ejecutar las seeds poner `php artisan migrate:fresh --seed` o `php artisan migrate --seed`
 
-## Factory
+## FACTORY
 - te llena por lote con valores falsos, para crear un factory es por ejemplo `php artisan make:factory CursoFactory --model=Curso` 
 
-## Rutas
+## RUTAS
 - si usas paginate tienes que poner `?page=2` para cargar los siguientes registros 
 - para ver las rutas es en la consola `php artisan r:l`
+
+## CREAR ARCHIVO DE CORREO ELECTRÓNICO
+-Para crear el archivo de correo electrónico es `php artisan make:mail ContactanosMailable`

@@ -14,7 +14,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 
 //*? a partir de laravel 9 se puede hacer esto de hacerlo en grupos 
@@ -38,3 +38,5 @@ Route::get('/', HomeController::class);
 //*! parameters es para asignar también los nombres de las variables ejem $curso 
 //* fue explicación lo devolvemos a como estaba 
 Route::resource('cursos', CursoController::class);
+
+Route::view('nosotros', 'nosotros')->name('nosotros');

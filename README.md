@@ -51,6 +51,10 @@ Eliminar el último lote de migraciones:
 - utilizan *eloquent* lo que trata a las consultas mysql como objetos y para ello crea modelos que son los administradores `php artisan make model` 
     - _Si creas un modelo llamado User lo que entiene es que administra la tabla users_
 
+## CONTROLADORES
+
+- Para crear un controlador de tipo recurso que extiende de su modelo es ` Category/CategoryController -r -m Category`
+
 ### Tinker
 - para iniciar `php artisan tinker`
 - para salir `exit`

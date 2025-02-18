@@ -23,10 +23,10 @@ RUN php artisan db:seed --force
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN chmod 644 /etc/apache2/sites-available/000-default.conf
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN a2ensite 000-default.conf
+RUN a2enmod rewrite
 
-RUN a2enmod rewrite && service apache2 restart #Inicia y reinicia apache
+RUN cat /etc/apache2/apache2.conf
 
 EXPOSE 80
